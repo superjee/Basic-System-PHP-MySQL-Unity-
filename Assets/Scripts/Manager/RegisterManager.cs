@@ -16,8 +16,15 @@ public class RegisterManager : MonoBehaviour
     {
         ServerResponse<object> res = JsonUtility.FromJson<ServerResponse<object>>(responseJson);
         if (res.success)
+        {
             Debug.Log("Register Success: " + res.message);
+            UIManager.Instance.OnBackClick();
+            PopupManager.Instance.ShowMessage(res.message);
+        }
         else
+        {
             Debug.Log("Register Failed: " + res.message);
+            PopupManager.Instance.ShowMessage(res.message);
+        }
     }
 }

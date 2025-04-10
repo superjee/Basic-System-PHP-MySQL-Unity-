@@ -10,6 +10,8 @@ public class UrlConfig : ScriptableObject
         {
             if (_instance == null)
                 _instance = Resources.Load<UrlConfig>("UrlConfig");
+            if (_instance == null)
+                Debug.LogError("UrlConfig.asset not found in Resources folder!");
 
             return _instance;
         }
