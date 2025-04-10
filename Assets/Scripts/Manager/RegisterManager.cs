@@ -27,7 +27,7 @@ public class RegisterManager : MonoBehaviour
         string json = JsonUtility.ToJson(data);
 
         StartCoroutine(WebRequestManager.Instance.PostRequest(
-            "https://test-piggy.codedefeat.com/worktest/dev05/register.php",
+            "https://test-piggy.codedefeat.com/worktest/dev05/api/auth/register.php",
             json,
             OnRegisterResponse));
     }

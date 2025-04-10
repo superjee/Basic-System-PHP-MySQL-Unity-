@@ -812,6 +812,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544699612}
   m_CullTransparentMesh: 1
+--- !u!1 &813568791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813568793}
+  - component: {fileID: 813568792}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &813568792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813568791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82cd49da7242194db173da6fb9e98e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registerManager: {fileID: 1159511578}
+  loginManager: {fileID: 1159511577}
+  usernameInput: {fileID: 3288759065211626350}
+  passwordInput: {fileID: 7137128214312081337}
+  signUp_usernameInput: {fileID: 491209038}
+  signUp_passwordInput: {fileID: 1950616413}
+  signUp_confirmPasswordInput: {fileID: 340799333}
+  loginPanel: {fileID: 1342906899}
+  signUpPanel: {fileID: 1521187605}
+--- !u!4 &813568793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813568791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1079047819}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &823305096
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +953,6 @@ GameObject:
   - component: {fileID: 1079047818}
   - component: {fileID: 1079047817}
   - component: {fileID: 1079047816}
-  - component: {fileID: 1079047820}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -983,6 +1035,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 813568793}
   - {fileID: 1342906900}
   - {fileID: 1521187606}
   m_Father: {fileID: 0}
@@ -992,27 +1045,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1079047820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079047815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b82cd49da7242194db173da6fb9e98e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  registerManager: {fileID: 1521187609}
-  loginManager: {fileID: 0}
-  usernameInput: {fileID: 3288759065211626350}
-  passwordInput: {fileID: 7137128214312081337}
-  signUp_usernameInput: {fileID: 491209038}
-  signUp_passwordInput: {fileID: 1950616413}
-  signUp_confirmPasswordInput: {fileID: 340799333}
-  loginPanel: {fileID: 1342906899}
-  signUpPanel: {fileID: 1521187605}
 --- !u!1 &1159511574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,8 +1055,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1159511576}
   - component: {fileID: 1159511575}
+  - component: {fileID: 1159511578}
+  - component: {fileID: 1159511577}
   m_Layer: 0
-  m_Name: WebRequestManager
+  m_Name: GameSystemManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1057,6 +1091,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1159511577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159511574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48716c37ef7d714e94f1483455f6684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1159511578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159511574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68e10e7c75740249a39cd09e7deea5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1206291498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1412,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1079047820}
+      - m_Target: {fileID: 813568792}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnRegisterClick
         m_Mode: 1
@@ -1617,7 +1675,6 @@ GameObject:
   - component: {fileID: 1521187606}
   - component: {fileID: 1521187608}
   - component: {fileID: 1521187607}
-  - component: {fileID: 1521187609}
   m_Layer: 5
   m_Name: Panel_Sign Up
   m_TagString: Untagged
@@ -1688,18 +1745,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521187605}
   m_CullTransparentMesh: 1
---- !u!114 &1521187609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521187605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e68e10e7c75740249a39cd09e7deea5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1562554688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,7 +1827,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1562554691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 813568792}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnLoginClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1562554691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,7 +1961,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1079047820}
+      - m_Target: {fileID: 813568792}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnSignUpClick
         m_Mode: 1
@@ -2422,7 +2479,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1079047820}
+      - m_Target: {fileID: 813568792}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnBackClick
         m_Mode: 1

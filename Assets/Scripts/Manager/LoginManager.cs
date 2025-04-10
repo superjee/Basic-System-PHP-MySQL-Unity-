@@ -34,7 +34,7 @@ public class LoginManager : MonoBehaviour
         string json = JsonUtility.ToJson(data);
 
         StartCoroutine(WebRequestManager.Instance.PostRequest(
-            "https://test-piggy.codedefeat.com/worktest/dev05/login.php",
+            "https://test-piggy.codedefeat.com/worktest/dev05/api/auth/login.php",
             json,
             OnLoginResponse));
     }
