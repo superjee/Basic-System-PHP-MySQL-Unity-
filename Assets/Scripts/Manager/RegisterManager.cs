@@ -1,41 +1,20 @@
 using UnityEngine;
-
-[System.Serializable]
-public class RegisterData
-{
-    public string username;
-    public string password;
-}
-
-[System.Serializable]
-public class RegisterResponse
-{
-    public bool success;
-    public string message;
-}
-
 public class RegisterManager : MonoBehaviour
 {
     public void Register(string username, string password)
     {
-        RegisterData data = new RegisterData
-        {
-            username = username,
-            password = password
-        };
-
+        var data = new AuthRequest(username, password);
         string json = JsonUtility.ToJson(data);
-
+        string url = UrlConfig.Instance.RegisterEndpoint;
         StartCoroutine(WebRequestManager.Instance.PostRequest(
-            "https://test-piggy.codedefeat.com/worktest/dev05/api/auth/register.php",
+            url,
             json,
             OnRegisterResponse));
     }
 
     private void OnRegisterResponse(string responseJson)
     {
-        RegisterResponse res = JsonUtility.FromJson<RegisterResponse>(responseJson);
-
+        ServerResponse<object> res = JsonUtility.FromJson<ServerResponse<object>>(responseJson);
         if (res.success)
             Debug.Log("Register Success: " + res.message);
         else

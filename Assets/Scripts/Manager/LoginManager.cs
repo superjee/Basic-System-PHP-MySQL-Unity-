@@ -1,38 +1,23 @@
 using UnityEngine;
 
 [System.Serializable]
-public class LoginData
+public class UserLoginData
 {
-    public string username;
-    public string password;
-}
-
-[System.Serializable]
-public class LoginResponse
-{
-    public bool success;
-    public string message;
     public int diamond;
     public int heart;
 }
 
 public class LoginManager : MonoBehaviour
 {
-    public static string LoggedInUsername;
-    public static int Diamond;
-    public static int Heart;
+    public UserDataSO userData;
     private string currentUsername;
+
     public void Login(string username, string password)
     {
         currentUsername = username;
-        LoginData data = new LoginData
-        {
-            username = username,
-            password = password
-        };
-
+        var data = new AuthRequest(username, password);
         string json = JsonUtility.ToJson(data);
-
+        string url = UrlConfig.Instance.LoginEndpoint;
         StartCoroutine(WebRequestManager.Instance.PostRequest(
             "https://test-piggy.codedefeat.com/worktest/dev05/api/auth/login.php",
             json,
@@ -41,19 +26,23 @@ public class LoginManager : MonoBehaviour
 
     private void OnLoginResponse(string responseJson)
     {
-        LoginResponse res = JsonUtility.FromJson<LoginResponse>(responseJson);
-
+        var res = JsonUtility.FromJson<ServerResponse<UserLoginData>>(responseJson);
         if (res.success)
         {
-            LoggedInUsername = currentUsername;
-            Diamond = res.diamond;
-            Heart = res.heart;
+            userData.username = currentUsername;
+            userData.diamond = res.data.diamond;
+            userData.heart = res.data.heart;
             Debug.Log("Login Success");
-            Debug.Log($"User: {LoggedInUsername}, Diamond: {Diamond}, Heart: {Heart}");
+            Debug.Log($"User: {userData.username}, Diamond: {userData.diamond}, Heart: {userData.heart}");
         }
         else
         {
             Debug.Log("Login Failed: " + res.message);
         }
+    }
+    public void Logout()
+    {
+        userData.ResetData();
+        Debug.Log("Logged out!");
     }
 }
