@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Asia/Bangkok');
 function write_debug_log($tag, $data)
 {
     $logPath = dirname(__DIR__) . "/debug_log.json";
